@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import AppBar from  './nav'
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppBar>
      <App />
-    </AppBar>
   </React.StrictMode>,
   document.getElementById('root')
 );
