@@ -35,5 +35,8 @@ export const styles = {
     },
     spinner: {
         margin: '6px'
+    },
+    logo: {
+        marginTop: '15px'
     }
 }
