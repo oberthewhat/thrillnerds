@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { styles } from "./styles/app"
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { TemporaryDrawer } from './pages/Darwer'
+// import { TemporaryDrawer } from './pages/Darwer'
 import logo from './images/thrillnerds-logo-01.png'
 
 function App() {
