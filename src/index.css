@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --grad: linear-gradient(135deg, #8B3FD4 0%, #D4306B 55%, #E8732A 100%);
+    --grad-h: linear-gradient(90deg, #A855F7 0%, #EC4899 50%, #F97316 100%);
+    --border: rgba(255, 255, 255, 0.07);
+    --border2: rgba(255, 255, 255, 0.14);
+    --muted: rgba(240, 235, 232, 0.48);
+    --muted2: rgba(240, 235, 232, 0.72);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0C0C0E;
+    color: #F0EBE8;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .grad-text {
+    background: var(--grad-h);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .grad-bg {
+    background: var(--grad);
+  }
+
+  .grad-line {
+    height: 1px;
+    background: var(--grad);
+    opacity: 0.28;
+  }
+
+  .border-subtle {
+    border-color: var(--border);
+  }
+
+  .border-subtle2 {
+    border-color: var(--border2);
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .text-muted2 {
+    color: var(--muted2);
+  }
+
+  .font-display {
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  .font-serif-display {
+    font-family: 'DM Serif Display', serif;
+  }
+}
+
+/* Logo glow pulse */
+@keyframes logopulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 50px rgba(212, 48, 107, 0.32))
+            drop-shadow(0 0 100px rgba(139, 63, 212, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 85px rgba(212, 48, 107, 0.6))
+            drop-shadow(0 0 170px rgba(139, 63, 212, 0.38));
+  }
+}
+
+.logo-pulse {
+  animation: logopulse 4s ease-in-out infinite;
+}
+
+/* Smooth image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.5s ease;
+}
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Gradient overlay on hover */
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139,63,212,0.65), rgba(212,48,107,0.5));
+  opacity: 0;
+  transition: opacity 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-zoom:hover .photo-overlay {
+  opacity: 1;
+}
