@@ -47,8 +47,7 @@ export default function Contact() {
               Let's Work <span className="grad-text">Together</span>
             </h2>
             <p className="text-[0.95rem] text-muted2 leading-[1.8] mb-8">
-              Whether you're a park, a creator, a brand in the thrill space, or just someone with an idea —
-              reach out. No corporate pitches. Just real conversations about real projects.
+              Got a project idea? Reach out to john@thrillnerds.com and we'll figure out if it makes sense.
             </p>
             <div className="flex flex-col gap-3">
               {contactLinks.map(({ icon, label, href }) => (

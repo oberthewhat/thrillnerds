@@ -7,9 +7,9 @@ export default function Instagram() {
 
         <div className="flex justify-between items-end flex-wrap gap-4 mb-10">
           <div>
-            <p className="text-[0.68rem] font-bold tracking-[0.22em] uppercase text-muted mb-2">Photos</p>
+            <p className="text-[0.68rem] font-bold tracking-[0.22em] uppercase text-muted mb-2">Instagram</p>
             <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[0.95] tracking-wide">
-              From the <span className="grad-text">Parks</span>
+              What I've <span className="grad-text">Been Up To</span>
             </h2>
           </div>
           <a

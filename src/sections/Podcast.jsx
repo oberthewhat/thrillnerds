@@ -6,9 +6,7 @@ const CC_LOGO = '/images/coaster-chronicles-logo.png'
 
 const platforms = [
   { label: '🎵 Spotify', href: `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}` },
-  { label: '🎙 Apple Podcasts', href: '#' },
-  { label: '☁ Overcast', href: '#' },
-  { label: '📻 Pocket Casts', href: '#' },
+  { label: '🎙 Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/coaster-cuzzies/id1501366983' },
 ]
 
 export default function Podcast() {
@@ -50,12 +48,22 @@ export default function Podcast() {
             <h3 className="font-serif-display text-[1.6rem] mb-2">Coaster Chronicles</h3>
             <div className="flex items-center gap-2 flex-wrap text-[0.82rem] text-muted mb-4">
               <span>with</span>
-              <strong className="text-muted2">John (ThrillNerds) &amp; @realswizey</strong>
+              <strong className="text-muted2">John (ThrillNerds) &amp; Stephen (IG - @realswizey)</strong>
               <span>· on the Coaster Cuzzies channel</span>
             </div>
+            <p className="text-[0.93rem] text-muted2 leading-[1.8] mb-3">
+              Me and Swizey sit down once a month, bring on a guest, and just talk coasters.
+              We try to find a good story in every episode and go wherever the conversation takes us.
+            </p>
             <p className="text-[0.93rem] text-muted2 leading-[1.8] mb-6">
-              Once a month, a proper sit-down. Park history, ride deep-dives, and coaster
-              conversations that take their time. Lives on the Coaster Cuzzies account.
+              Have a coaster story you want to share on the show?{' '}
+              <a
+                href="mailto:john@thrillnerds.com?subject=Coaster Chronicles Story"
+                className="text-[#F0EBE8] underline underline-offset-2 hover:text-white transition-colors"
+              >
+                Send it our way
+              </a>{' '}
+              and we'll see if it's a fit.
             </p>
             <div className="flex flex-wrap gap-2">
               {platforms.map(({ label, href }) => (

@@ -33,11 +33,11 @@ export default function Hero() {
           </span>
           <h1 className="font-display text-[clamp(4rem,8.5vw,7rem)] leading-[0.92] tracking-wide mb-6">
             Where Thrill<br />
-            <span className="grad-text">Meets Story</span>
+            <span className="grad-text">Meets Community</span>
           </h1>
           <p className="text-[1.05rem] text-muted2 max-w-[460px] mb-10 leading-[1.75]">
             Content creator, podcast host, and coaster enthusiast based in Austin, Texas.
-            Covering parks, people, and the real joy behind every ride — since 2003.
+            Covering parks, people, and behind the scenes of amusement parks — since 2003.
           </p>
           <div className="flex gap-3.5 flex-wrap">
             <a
