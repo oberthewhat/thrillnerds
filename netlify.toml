@@ -19,3 +19,8 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+  [[redirects]]
+  from = "/milliesbirthday"
+  to = "/milliesbirthday.html"
+  status = 200
