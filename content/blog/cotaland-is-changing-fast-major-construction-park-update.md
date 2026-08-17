@@ -98,16 +98,6 @@ Peppermint Parkway is expected to evolve into a park-based holiday event called 
 
 That could be especially valuable for local season passholders. COTALAND does not have to depend entirely on tourists visiting Austin or guests attending a race at COTA. Holiday events, new entertainment, and seasonal decorations can give Central Texas families a reason to return throughout the year.
 
-## Phase 2 is already being discussed
-
-The immediate priority is getting COTALAND open, training the team, and bringing the rides online.
-
-The park is also thinking about Phase 2.
-
-Specific attractions have not been announced, and there is no reason to guess at projects before COTALAND is ready to share them. What we can see is that the property has room to grow beyond the opening-day footprint.
-
-More information about the next phase could begin to emerge toward the end of August. How much land COTALAND uses and which type of attraction comes next will tell us a lot about the park's long-term direction.
-
 ## COTALAND could become an important park for Austin
 
 People have been asking when COTALAND will open for a long time. I understand the impatience, especially after following this project through years of construction.
