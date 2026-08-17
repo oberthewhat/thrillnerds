@@ -2,6 +2,7 @@ import Nav from './components/Nav'
 import Hero from './sections/Hero'
 import Instagram from './sections/Instagram'
 import Feeds from './sections/Feeds'
+import Blog from './sections/Blog'
 import Podcast from './sections/Podcast'
 import Work from './sections/Work'
 import Contact from './sections/Contact'
@@ -17,6 +18,8 @@ export default function App() {
         <Instagram />
         <div className="grad-line" />
         <Feeds />
+        <div className="grad-line" />
+        <Blog />
         <div className="grad-line" />
         <Podcast />
         <div className="grad-line" />

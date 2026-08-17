@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 const links = [
   { href: '#instagram', label: 'Photos' },
   { href: '#latest', label: 'Latest' },
+  { href: '/blog/', label: 'Blog', page: true },
   { href: '#podcast', label: 'Podcast' },
   { href: '#work', label: 'Work' },
   { href: '#contact', label: 'Collab' },

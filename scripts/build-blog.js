@@ -266,7 +266,7 @@ function sitemap(posts) {
   ]
   const body = urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${body}
 </urlset>`
 }
@@ -310,7 +310,19 @@ function main() {
   fs.writeFileSync(path.join(outDir, 'index.html'), indexPage(posts))
   fs.writeFileSync(path.join(root, 'dist', 'sitemap.xml'), sitemap(posts))
 
-  console.log(`[blog] generated ${posts.length} post(s) + index + sitemap`)
+  // Compact JSON feed the React homepage reads to show latest posts.
+  const feed = posts.map(p => ({
+    slug: p.slug,
+    title: p.title,
+    description: p.description,
+    date: p.date,
+    url: `/blog/${p.slug}/`,
+    image: postImage(p, 'maxresdefault'),
+    imageFallback: p.youtube ? `https://img.youtube.com/vi/${p.youtube}/hqdefault.jpg` : '',
+  }))
+  fs.writeFileSync(path.join(outDir, 'posts.json'), JSON.stringify(feed))
+
+  console.log(`[blog] generated ${posts.length} post(s) + index + sitemap + feed`)
   for (const p of posts) console.log(`       /blog/${p.slug}/`)
 }
 

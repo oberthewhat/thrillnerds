@@ -3,7 +3,7 @@ title: COTALand Is Changing FAST! Major Construction & Park Update
 description: A closer look inside COTALand as landscaping, shade structures, family rides, new pathways, and final construction bring Austin's new theme park closer to opening.
 youtube: zzcKG34coQs
 date: 2026-07-22
-image: /images/hero.jpg
+image:
 ---
 
 COTALand is starting to feel less like a construction site and much more like a finished theme park.
