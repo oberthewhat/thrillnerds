@@ -3,7 +3,7 @@ title: Jungle X-Pedition Is Missing One Important Thing
 description: Kings Dominion's Jungle X-Pedition is its strongest themed land, but Lake Charles still lacks a focal point. A serpent-themed tilt coaster could finish it.
 youtube: j819GZsrzGA
 date: 2026-01-17
-image: /images/hero.jpg
+image:
 ---
 
 Kings Dominion is one of those parks I will always look at a little differently.

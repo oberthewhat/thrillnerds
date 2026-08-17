@@ -3,7 +3,7 @@ title: "Six Flags Fiesta Texas New Attraction: Breaking Down the Clues & My Pred
 description: Land clearing, full moon clues, and a promised signature attraction shaped my prediction for the next major roller coaster at Six Flags Fiesta Texas.
 youtube: WoULP4XjLeA
 date: 2026-01-13
-image: /images/hero.jpg
+image:
 ---
 
 Jeffrey Siebert was dropping clues again.

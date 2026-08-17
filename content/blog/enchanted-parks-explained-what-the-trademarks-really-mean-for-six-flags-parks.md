@@ -3,7 +3,7 @@ title: "Enchanted Parks Explained: What the Trademarks Really Mean for Six Flags
 description: What the Enchanted Parks trademark filings actually tell us about Six Flags parks, possible ownership changes, and the questions still unanswered.
 youtube: RQW2oDCVfpM
 date: 2026-02-04
-image: /images/hero.jpg
+image: 
 ---
 
 Over the past few weeks, I have seen a lot of concern around a name most park fans had never heard before: Enchanted Parks.

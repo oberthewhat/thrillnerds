@@ -3,7 +3,7 @@ title: COTALAND’s Palindrome Surprised Me... A LOT
 description: My first ride on Palindrome at COTALAND, an unexpectedly intense Gerstlauer shuttle coaster opening at Circuit of the Americas in Austin.
 youtube: esXB_p5lZjk
 date: 2026-03-24
-image: /images/hero.jpg
+image:
 ---
 
 Palindrome fooled me.

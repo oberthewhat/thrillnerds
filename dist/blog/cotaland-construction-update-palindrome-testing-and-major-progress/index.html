@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/images/logo03.png" />
+  <title>COTALAND Construction Update: Palindrome Testing &amp; Major Progress · ThrillNerds</title>
+  <meta name="description" content="Palindrome testing, Soggy Logger construction, new ride foundations, and major progress across COTALAND at Circuit of the Americas in Austin." />
+  <link rel="canonical" href="https://thrillnerds.com/blog/cotaland-construction-update-palindrome-testing-and-major-progress/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="COTALAND Construction Update: Palindrome Testing &amp; Major Progress" />
+  <meta property="og:description" content="Palindrome testing, Soggy Logger construction, new ride foundations, and major progress across COTALAND at Circuit of the Americas in Austin." />
+  <meta property="og:image" content="https://img.youtube.com/vi/tCmKcXXIGHg/hqdefault.jpg" />
+  <meta property="og:url" content="https://thrillnerds.com/blog/cotaland-construction-update-palindrome-testing-and-major-progress/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="COTALAND Construction Update: Palindrome Testing &amp; Major Progress" />
+  <meta name="twitter:description" content="Palindrome testing, Soggy Logger construction, new ride foundations, and major progress across COTALAND at Circuit of the Americas in Austin." />
+  <meta name="twitter:image" content="https://img.youtube.com/vi/tCmKcXXIGHg/hqdefault.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --grad: linear-gradient(135deg, #8B3FD4 0%, #D4306B 55%, #E8732A 100%);
+      --grad-h: linear-gradient(90deg, #A855F7 0%, #EC4899 50%, #F97316 100%);
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.14);
+      --muted: rgba(240,235,232,0.48);
+      --muted2: rgba(240,235,232,0.72);
+      --bg: #0C0C0E;
+      --fg: #F0EBE8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: 'DM Sans', sans-serif; line-height: 1.7;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .grad-text {
+      background: var(--grad-h); -webkit-background-clip: text;
+      background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .grad-line { height: 1px; background: var(--grad); opacity: 0.28; }
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 40px; background: rgba(12,12,14,0.9);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+    }
+    nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    nav .logo img { height: 32px; width: auto; }
+    nav .logo span { font-family: 'Bebas Neue', cursive; font-size: 24px; letter-spacing: 0.15em; }
+    nav ul { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+    nav ul a { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    nav ul a:hover { color: var(--fg); }
+    @media (max-width: 767px) { nav ul { display: none; } nav { padding: 12px 20px; } }
+    /* Article */
+    .wrap { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; }
+    .eyebrow { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .eyebrow a { color: var(--muted); text-decoration: none; }
+    .eyebrow a:hover { color: var(--fg); }
+    h1.title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; margin: 0 0 20px; }
+    .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+    .video { position: relative; padding-bottom: 56.25%; height: 0; margin: 0 0 48px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border2); }
+    .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; border: 1px solid var(--border2); margin: 0 0 40px; display: block; }
+    article { font-size: 18px; color: rgba(240,235,232,0.9); }
+    article h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin: 48px 0 16px; color: var(--fg); }
+    article p { margin: 0 0 24px; }
+    article a { color: #EC4899; text-decoration: underline; text-underline-offset: 3px; }
+    article strong { color: var(--fg); }
+    article ul, article ol { margin: 0 0 24px; padding-left: 24px; }
+    article li { margin-bottom: 8px; }
+    article img { max-width: 100%; border-radius: 12px; margin: 32px 0; }
+    /* Index list — card style matching the site */
+    .post-list { list-style: none; margin: 40px 0 0; padding: 0; }
+    .post-list li { margin-bottom: 20px; }
+    .post-list a {
+      text-decoration: none; display: flex; gap: 20px;
+      background: #1A1A1F; border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .post-list a:hover { border-color: var(--border2); }
+    .post-list .thumb { flex-shrink: 0; width: 200px; aspect-ratio: 16/9; overflow: hidden; background: #222228; }
+    .post-list .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .post-list a:hover .thumb img { transform: scale(1.05); }
+    .post-list .post-body { padding: 20px 22px 20px 0; display: flex; flex-direction: column; justify-content: center; }
+    .post-list h2 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin: 0 0 8px; color: var(--fg); line-height: 1.2; }
+    .post-list p { color: var(--muted2); margin: 0 0 10px; font-size: 15px; line-height: 1.5; }
+    .post-list .date { color: var(--muted); font-size: 13px; }
+    @media (max-width: 599px) {
+      .post-list a { flex-direction: column; gap: 0; }
+      .post-list .thumb { width: 100%; }
+      .post-list .post-body { padding: 18px 20px; }
+    }
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    footer .brand { display: flex; align-items: center; gap: 12px; }
+    footer .brand img { height: 24px; width: auto; }
+    footer .brand span { font-size: 12px; color: var(--muted); }
+    footer .links { display: flex; gap: 24px; }
+    footer .links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .links a:hover { color: var(--fg); }
+    .back { display: inline-block; margin-top: 56px; font-size: 14px; color: var(--muted); text-decoration: none; }
+    .back:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/">
+    <img src="/images/logo03.png" alt="ThrillNerds" />
+    <span class="grad-text">ThrillNerds</span>
+  </a>
+  <ul>
+    <li><a href="/#instagram">Photos</a></li>
+    <li><a href="/#latest">Latest</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact">Collab</a></li>
+  </ul>
+</nav>
+<div class="wrap">
+  <div class="eyebrow"><a href="/blog/">Blog</a></div>
+  <h1 class="title">COTALAND Construction Update: Palindrome Testing &amp; Major Progress</h1>
+  <div class="meta">December 14, 2025</div>
+  <img class="hero" src="https://img.youtube.com/vi/tCmKcXXIGHg/maxresdefault.jpg" alt="COTALAND Construction Update: Palindrome Testing &amp; Major Progress" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/tCmKcXXIGHg/hqdefault.jpg'" />
+  <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/tCmKcXXIGHg" title="COTALAND Construction Update: Palindrome Testing &amp; Major Progress" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+  <article><p>COTALAND was changing quickly during my latest visit to Circuit of the Americas.</p>
+<p>Palindrome was running repeated test cycles. The Soggy Logger station had gone vertical. The S&amp;S Screamin&#39; Swing had topped out, and pieces of the drop tower were being staged near its foundation.</p>
+<p>There was still a lot of unfinished ground across the park, but the individual attractions were beginning to connect into something that looked much closer to a complete Austin amusement park.</p>
+<p>This COTALAND construction update covers where the major rides stood in December 2025 and which projects appeared closest to their next construction milestones.</p>
+<h2>The Soggy Logger station has gone vertical</h2>
+<p>The Soggy Logger station was one of the clearest changes since my previous COTALAND update.</p>
+<p>The timber framing had started rising around the station, giving the log flume a mountain lodge appearance. Even at this early stage, the structure was establishing a stronger identity than an exposed loading platform would have provided.</p>
+<p>Sections around the ride remained open so crews could continue adding landscaping and finishing work near the track.</p>
+<p>That access is important because the plants, pathways, fencing, and themed details around Soggy Logger will determine how complete the attraction feels when guests first see it.</p>
+<p>A foundation had also been prepared for a nearby shop and bar. Those additions should make the area useful for guests who are waiting for riders or looking for somewhere to stop between attractions.</p>
+<h2>Limestone is becoming part of the COTALAND look</h2>
+<p>Large limestone blocks continued appearing throughout the park.</p>
+<p>I like that material for COTALAND. It connects naturally with Central Texas and gives walls, planters, and building foundations more character than plain concrete.</p>
+<p>The park still had a lot of utility work underway. Conduit and plumbing were visible near future foundations, while crews continued grading and preparing land across the property.</p>
+<p>This stage can look slow because so much of the work eventually disappears underground. Once the utilities and foundations are ready, buildings and pathways can begin changing the site much more visibly.</p>
+<p>COTALAND was clearly still in that transition during this visit.</p>
+<h2>The family ride area is taking shape</h2>
+<p>Several new ride pads made the family section easier to understand.</p>
+<p>The Mini Miami foundation was visible, along with the pad for the canoe ride. The canoe attraction will function as a small junior log flume, giving younger children their own water ride experience.</p>
+<p>Those smaller rides are an important part of the overall COTALAND lineup. Circuit Breaker and Palindrome may receive most of the attention from roller coaster fans, but the park needs enough children&#39;s attractions to give families something to do together throughout the day.</p>
+<p>The magnolia trees were also continuing to change the area, although a few appeared to have died since they were planted.</p>
+<p>Landscaping will need time and maintenance before the park develops the dense appearance planned for it. Planting mature trees early gives COTALAND a useful head start.</p>
+<h2>The T20 building is waiting on its second floor</h2>
+<p>The T20 building continued to look good from the outside, but work on the second floor had not visibly started.</p>
+<p>Scaffolding was finally being installed around the upper portion, which suggested more progress could be coming soon.</p>
+<p>Buildings like this require more coordination than the exterior framing alone reveals. Utilities, structural work, interior systems, and inspections can all affect when the next visible section begins.</p>
+<p>From outside the site, the second floor felt overdue. The scaffolding was at least a sign that crews were preparing to move upward.</p>
+<h2>Wacky Worm was operating at Peppermint Parkway</h2>
+<p>The future Wacky Worm location inside COTALAND remained an open plot during this update.</p>
+<p>The coaster itself was already operating for Peppermint Parkway on the other side of the Circuit of the Americas grandstands.</p>
+<p>That allowed guests to ride it during the holiday event while construction continued on its permanent location inside the amusement park.</p>
+<p>Once moved into COTALAND, Wacky Worm will become part of a compact coaster cluster with Texas Wildcat and Circuit Breaker.</p>
+<p>That grouping should give the area a lot of visible movement, particularly with the S&amp;S Screamin&#39; Swing rising in the middle of it.</p>
+<h2>The S&amp;S Screamin&#39; Swing has topped out</h2>
+<p>The S&amp;S Screamin&#39; Swing had reached its full structural height during the week of this visit.</p>
+<p>Crews were working on the arms that extend from the main structure and connect to the ride&#39;s seating assemblies.</p>
+<p>This attraction will have a major presence inside COTALAND. Screamin&#39; Swings are visually effective because the ride cycle sends both seating sections high above the surrounding pathways.</p>
+<p>With several roller coasters nearby, the swinging arms should add another layer of movement to an already active section of the park.</p>
+<p>It was still clearly under construction, but reaching the top of the structure was an important milestone.</p>
+<h2>Texas Wildcat track work is complete</h2>
+<p>The track installation for Texas Wildcat appeared complete.</p>
+<p>The station still needed to be built, which made an opening during Peppermint Parkway unlikely from what I could see in December.</p>
+<p>My expectation was that Texas Wildcat would be ready closer to the NASCAR weekend at Circuit of the Americas. That was only my estimate based on the remaining work, not a confirmed opening date from COTALAND.</p>
+<p>Once operating, Texas Wildcat will add a different kind of family coaster to the park&#39;s lineup.</p>
+<p>Wacky Worm, Texas Wildcat, and Circuit Breaker will surround the Screamin&#39; Swing with attractions built for different age groups and thrill levels.</p>
+<p>That should become one of the busiest sections of COTALAND.</p>
+<h2>Circuit Breaker was running test cycles</h2>
+<p>Circuit Breaker was testing during my visit.</p>
+<p>Seeing the Vekoma tilt coaster move through the layout made the surrounding construction feel much further along. Even before the pathways and neighboring rides were finished, Circuit Breaker already had the scale and movement expected from COTALAND&#39;s headline roller coaster.</p>
+<p>The station and plaza experience also looked impressive.</p>
+<p>COTALAND put real effort into making Circuit Breaker feel like a complete attraction rather than a coaster placed beside the racetrack. The station, surrounding structures, and approach help give the ride an identity connected to Circuit of the Americas.</p>
+<p>Testing does not establish an opening date on its own. It does show that the coaster had moved beyond track construction and into the process of preparing its systems for regular operation.</p>
+<h2>The drop tower is moving beyond foundation work</h2>
+<p>Part of the COTALAND drop tower was lying on its side near the construction area.</p>
+<p>The component had been removed from its shipping container and staged closer to where crews would eventually assemble the ride.</p>
+<p>That was encouraging because the foundation had been little more than a large hole not long before this visit.</p>
+<p>Rebar now filled the site, along with electrical work leading toward the future control area. The ride was not ready to rise yet, but the construction sequence was becoming much easier to follow.</p>
+<p>Once the foundation is complete and the tower sections begin going vertical, this attraction should change the COTALAND skyline quickly.</p>
+<h2>Palindrome was testing with two trains</h2>
+<p>Palindrome had some of the most active work anywhere in the park.</p>
+<p>Gerstlauer was still on-site, and the coaster was running repeated tests with two trains. I spent a good part of the day watching it cycle forward and backward through the compact shuttle layout.</p>
+<p>Even from outside the ride, Palindrome looked quick and whippy.</p>
+<p>The switch track was especially interesting to watch. After completing the backward portion of the layout, the train moves onto a rotating track section that aligns it with the return to the station.</p>
+<p>Seeing that system work repeatedly was a good sign for the coaster&#39;s operational progress.</p>
+<h2>The Palindrome station and queue are being framed</h2>
+<p>Construction was also moving around the Palindrome station.</p>
+<p>Crews had started framing the station structure, and the future queue area was visible beside it. Path preparation was underway nearby ahead of additional concrete work.</p>
+<p>Those surrounding pieces often make a ride site look unfinished long after the track itself is ready.</p>
+<p>Palindrome could continue testing while crews worked on the station, queue, pathways, electrical systems, and guest areas. Every part still needed to come together before the coaster could operate with the public.</p>
+<p>Based on what I saw, I expected Palindrome to be ready around NASCAR weekend rather than opening before then. That remained a personal estimate based on construction progress.</p>
+<h2>COTALAND&#39;s coaster lineup is becoming visible</h2>
+<p>This visit made the relationship between the rides much clearer.</p>
+<p>Circuit Breaker will provide the park&#39;s largest signature experience. Palindrome adds a compact shuttle coaster with forward and backward elements. Texas Wildcat and Wacky Worm give younger riders additional options nearby.</p>
+<p>The Screamin&#39; Swing sits among them as a large flat ride that should be visible from several parts of COTALAND.</p>
+<p>That density is one of the most promising things about the project. The park is using its available space to keep attractions close together, which should create an energetic atmosphere even when individual queues are not busy.</p>
+<p>There were still open foundations and unfinished paths across the site, but the ride collection was no longer difficult to imagine.</p>
+<h2>The park still has a lot of finishing work ahead</h2>
+<p>Palindrome testing and completed coaster track are major milestones, but COTALAND still had plenty of work remaining in December 2025.</p>
+<p>Stations needed to be finished. Pathways had to be poured. Utilities, landscaping, fencing, shops, and guest areas were still developing throughout the property.</p>
+<p>The progress was happening at different stages depending on the attraction.</p>
+<p>Circuit Breaker and Palindrome were already testing. Texas Wildcat had completed track work but still needed its station. The Screamin&#39; Swing had topped out, while the drop tower was only beginning to move toward vertical assembly.</p>
+<p>That mix made the park look uneven from one section to another, which is normal during a project this large.</p>
+<p>COTALAND was not ready yet, but the Austin theme park was reaching the point where each construction visit revealed another recognizable piece of the finished destination.</p>
+</article>
+  <a class="back" href="/blog/">← All posts</a>
+</div>
+<footer>
+  <div class="brand">
+    <img src="/images/logo03.png" alt="ThrillNerds" />
+    <span>ThrillNerds · Re.Est. 2021 · Austin, Texas</span>
+  </div>
+  <div class="links">
+    <a href="https://www.youtube.com/@thrillnerds" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://www.instagram.com/thrillnerds/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://open.spotify.com/show/7txZik9TwRL3SRJVKZjrnC" target="_blank" rel="noopener noreferrer">Podcast</a>
+    <a href="mailto:john@thrillnerds.com">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
