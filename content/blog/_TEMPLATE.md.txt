@@ -1,0 +1,17 @@
+---
+title: Your Post Title Here
+description: One or two sentences. This is what shows in Google results and social previews, so make it specific and in-voice.
+youtube: VIDEO_ID_HERE
+date: 2026-02-20
+image: /images/hero.jpg
+---
+
+Opening line — talk like you're telling a friend about the park. No trailer setup, no "here's what nobody tells you."
+
+## A section heading
+
+Body paragraph.
+
+## Another section
+
+Body paragraph.

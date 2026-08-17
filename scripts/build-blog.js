@@ -1,0 +1,272 @@
+// Generates static blog HTML from markdown files in content/blog/.
+// Runs as part of `npm run build`, after Vite writes to dist/.
+// Each post becomes dist/blog/<slug>/index.html, plus a dist/blog/index.html listing.
+
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { marked } from 'marked'
+import matter from 'gray-matter'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const root = path.resolve(__dirname, '..')
+const contentDir = path.join(root, 'content', 'blog')
+const outDir = path.join(root, 'dist', 'blog')
+
+const SITE = {
+  url: 'https://thrillnerds.com',
+  name: 'ThrillNerds',
+}
+
+// Shared <head>: fonts + inlined design tokens pulled straight from index.css
+// so blog pages match the app without depending on Tailwind's build.
+function head({ title, description, canonical, image }) {
+  const ogImage = image
+    ? (image.startsWith('http') ? image : SITE.url + image)
+    : `${SITE.url}/images/logo02.png`
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/images/logo03.png" />
+  <title>${escapeHtml(title)} · ${SITE.name}</title>
+  <meta name="description" content="${escapeAttr(description)}" />
+  <link rel="canonical" href="${canonical}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="${escapeAttr(title)}" />
+  <meta property="og:description" content="${escapeAttr(description)}" />
+  <meta property="og:image" content="${ogImage}" />
+  <meta property="og:url" content="${canonical}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeAttr(title)}" />
+  <meta name="twitter:description" content="${escapeAttr(description)}" />
+  <meta name="twitter:image" content="${ogImage}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --grad: linear-gradient(135deg, #8B3FD4 0%, #D4306B 55%, #E8732A 100%);
+      --grad-h: linear-gradient(90deg, #A855F7 0%, #EC4899 50%, #F97316 100%);
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.14);
+      --muted: rgba(240,235,232,0.48);
+      --muted2: rgba(240,235,232,0.72);
+      --bg: #0C0C0E;
+      --fg: #F0EBE8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--fg);
+      font-family: 'DM Sans', sans-serif; line-height: 1.7;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .grad-text {
+      background: var(--grad-h); -webkit-background-clip: text;
+      background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .grad-line { height: 1px; background: var(--grad); opacity: 0.28; }
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 40px; background: rgba(12,12,14,0.9);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+    }
+    nav .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    nav .logo img { height: 32px; width: auto; }
+    nav .logo span { font-family: 'Bebas Neue', cursive; font-size: 24px; letter-spacing: 0.15em; }
+    nav ul { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+    nav ul a { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    nav ul a:hover { color: var(--fg); }
+    @media (max-width: 767px) { nav ul { display: none; } nav { padding: 12px 20px; } }
+    /* Article */
+    .wrap { max-width: 720px; margin: 0 auto; padding: 120px 24px 80px; }
+    .eyebrow { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .eyebrow a { color: var(--muted); text-decoration: none; }
+    .eyebrow a:hover { color: var(--fg); }
+    h1.title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.12; margin: 0 0 20px; }
+    .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
+    .video { position: relative; padding-bottom: 56.25%; height: 0; margin: 0 0 48px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border2); }
+    .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    article { font-size: 18px; color: rgba(240,235,232,0.9); }
+    article h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin: 48px 0 16px; color: var(--fg); }
+    article p { margin: 0 0 24px; }
+    article a { color: #EC4899; text-decoration: underline; text-underline-offset: 3px; }
+    article strong { color: var(--fg); }
+    article ul, article ol { margin: 0 0 24px; padding-left: 24px; }
+    article li { margin-bottom: 8px; }
+    article img { max-width: 100%; border-radius: 12px; margin: 32px 0; }
+    /* Index list */
+    .post-list { list-style: none; margin: 40px 0 0; padding: 0; }
+    .post-list li { border-top: 1px solid var(--border); padding: 28px 0; }
+    .post-list a { text-decoration: none; display: block; }
+    .post-list h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin: 0 0 8px; color: var(--fg); transition: opacity 0.2s; }
+    .post-list a:hover h2 { opacity: 0.75; }
+    .post-list p { color: var(--muted2); margin: 0 0 8px; font-size: 16px; }
+    .post-list .date { color: var(--muted); font-size: 13px; }
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    footer .brand { display: flex; align-items: center; gap: 12px; }
+    footer .brand img { height: 24px; width: auto; }
+    footer .brand span { font-size: 12px; color: var(--muted); }
+    footer .links { display: flex; gap: 24px; }
+    footer .links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .links a:hover { color: var(--fg); }
+    .back { display: inline-block; margin-top: 56px; font-size: 14px; color: var(--muted); text-decoration: none; }
+    .back:hover { color: var(--fg); }
+  </style>
+</head>`
+}
+
+function navBar() {
+  return `<nav>
+  <a class="logo" href="/">
+    <img src="/images/logo03.png" alt="ThrillNerds" />
+    <span class="grad-text">ThrillNerds</span>
+  </a>
+  <ul>
+    <li><a href="/#instagram">Photos</a></li>
+    <li><a href="/#latest">Latest</a></li>
+    <li><a href="/#podcast">Podcast</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact">Collab</a></li>
+  </ul>
+</nav>`
+}
+
+function footer() {
+  return `<footer>
+  <div class="brand">
+    <img src="/images/logo03.png" alt="ThrillNerds" />
+    <span>ThrillNerds · Re.Est. 2021 · Austin, Texas</span>
+  </div>
+  <div class="links">
+    <a href="https://www.youtube.com/@thrillnerds" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://www.instagram.com/thrillnerds/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://open.spotify.com/show/7txZik9TwRL3SRJVKZjrnC" target="_blank" rel="noopener noreferrer">Podcast</a>
+    <a href="mailto:john@thrillnerds.com">Contact</a>
+  </div>
+</footer>`
+}
+
+function formatDate(d) {
+  const date = new Date(d)
+  if (isNaN(date)) return ''
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+}
+
+function escapeHtml(s = '') {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+function escapeAttr(s = '') {
+  return escapeHtml(s).replace(/"/g, '&quot;')
+}
+
+function postPage(post) {
+  const canonical = `${SITE.url}/blog/${post.slug}/`
+  const video = post.youtube
+    ? `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${escapeAttr(post.youtube)}" title="${escapeAttr(post.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`
+    : ''
+  return `${head({ title: post.title, description: post.description, canonical, image: post.image })}
+<body>
+${navBar()}
+<div class="wrap">
+  <div class="eyebrow"><a href="/blog/">Blog</a></div>
+  <h1 class="title">${escapeHtml(post.title)}</h1>
+  <div class="meta">${formatDate(post.date)}</div>
+  ${video}
+  <article>${post.html}</article>
+  <a class="back" href="/blog/">← All posts</a>
+</div>
+${footer()}
+</body>
+</html>`
+}
+
+function indexPage(posts) {
+  const canonical = `${SITE.url}/blog/`
+  const items = posts.map(p => `    <li>
+      <a href="/blog/${p.slug}/">
+        <h2>${escapeHtml(p.title)}</h2>
+        <p>${escapeHtml(p.description)}</p>
+        <span class="date">${formatDate(p.date)}</span>
+      </a>
+    </li>`).join('\n')
+  return `${head({ title: 'Blog', description: 'Honest write-ups on coasters, parks, and the thrill ride world — companion reads to the ThrillNerds videos.', canonical, image: '/images/logo02.png' })}
+<body>
+${navBar()}
+<div class="wrap">
+  <div class="eyebrow">ThrillNerds</div>
+  <h1 class="title">The Blog</h1>
+  <div class="meta">Companion write-ups to the videos — same honest fan perspective, in reading form.</div>
+  <ul class="post-list">
+${items}
+  </ul>
+  <a class="back" href="/">← Back to site</a>
+</div>
+${footer()}
+</body>
+</html>`
+}
+
+function sitemap(posts) {
+  const urls = [
+    `${SITE.url}/`,
+    `${SITE.url}/blog/`,
+    ...posts.map(p => `${SITE.url}/blog/${p.slug}/`),
+  ]
+  const body = urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+${body}
+</urlset>`
+}
+
+function main() {
+  if (!fs.existsSync(contentDir)) {
+    console.log('[blog] no content/blog directory, skipping')
+    return
+  }
+  const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md'))
+  if (files.length === 0) {
+    console.log('[blog] no markdown posts found, skipping')
+    return
+  }
+
+  const posts = files.map(file => {
+    const raw = fs.readFileSync(path.join(contentDir, file), 'utf8')
+    const { data, content } = matter(raw)
+    const slug = data.slug || file.replace(/\.md$/, '')
+    if (!data.title) throw new Error(`[blog] ${file} is missing a "title" in frontmatter`)
+    return {
+      slug,
+      title: data.title,
+      description: data.description || '',
+      youtube: data.youtube || '',
+      date: data.date || '',
+      image: data.image || '',
+      html: marked.parse(content),
+    }
+  })
+
+  // newest first
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  fs.mkdirSync(outDir, { recursive: true })
+  for (const post of posts) {
+    const dir = path.join(outDir, post.slug)
+    fs.mkdirSync(dir, { recursive: true })
+    fs.writeFileSync(path.join(dir, 'index.html'), postPage(post))
+  }
+  fs.writeFileSync(path.join(outDir, 'index.html'), indexPage(posts))
+  fs.writeFileSync(path.join(root, 'dist', 'sitemap.xml'), sitemap(posts))
+
+  console.log(`[blog] generated ${posts.length} post(s) + index + sitemap`)
+  for (const p of posts) console.log(`       /blog/${p.slug}/`)
+}
+
+main()

@@ -15,15 +15,21 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# --- Specific redirects FIRST (order matters) ---
 
 [[redirects]]
   from = "/milliesbirthday"
   to = "/milliesbirthday.html"
   status = 200
+
+# Blog pages are real static files in dist/blog/ — serve them directly,
+# so the SPA catch-all below never swallows them.
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/:splat"
+  status = 200
+
+# --- SPA catch-all LAST (only one, at the very end) ---
 
 [[redirects]]
   from = "/*"
