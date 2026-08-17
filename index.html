@@ -18,6 +18,20 @@
     </script>
   </head>
   <body>
+    <!--
+      Static blueprint form for Netlify Forms detection.
+      Netlify scans built HTML at deploy time and can't see React-rendered forms,
+      so this hidden copy registers the "contact" form and its fields.
+      Field names MUST match the React form in src/sections/Contact.jsx.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="type" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

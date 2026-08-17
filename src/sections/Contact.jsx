@@ -81,10 +81,15 @@ export default function Contact() {
                 name="contact"
                 method="POST"
                 data-netlify="true"
+                data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-4"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                {/* Honeypot: real users never see or fill this; bots do, and get filtered */}
+                <p className="hidden">
+                  <label>Don't fill this out: <input name="bot-field" /></label>
+                </p>
 
                 <div>
                   <label className={labelClass}>Your Name</label>
