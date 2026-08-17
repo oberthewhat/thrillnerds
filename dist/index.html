@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <meta name="google-site-verification" content="bEL3-JfPytazknrGpNTL49eIKQFzGuGFwwWADyfTwp0" />
     <!-- Behold.so Instagram feed -->
     <script>
       (() => {
@@ -16,10 +17,24 @@
         s.src="https://w.behold.so/widget.js";d.head.append(s);
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-DpjilNgm.js"></script>
+    <script type="module" crossorigin src="/assets/index-Clru_1rR.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-D2erJOyg.css">
   </head>
   <body>
+    <!--
+      Static blueprint form for Netlify Forms detection.
+      Netlify scans built HTML at deploy time and can't see React-rendered forms,
+      so this hidden copy registers the "contact" form and its fields.
+      Field names MUST match the React form in src/sections/Contact.jsx.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="type" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+
     <div id="root"></div>
   </body>
 </html>

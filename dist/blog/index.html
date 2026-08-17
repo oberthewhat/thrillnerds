@@ -66,6 +66,7 @@
     .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
     .video { position: relative; padding-bottom: 56.25%; height: 0; margin: 0 0 48px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border2); }
     .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; border: 1px solid var(--border2); margin: 0 0 40px; display: block; }
     article { font-size: 18px; color: rgba(240,235,232,0.9); }
     article h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin: 48px 0 16px; color: var(--fg); }
     article p { margin: 0 0 24px; }
@@ -74,14 +75,27 @@
     article ul, article ol { margin: 0 0 24px; padding-left: 24px; }
     article li { margin-bottom: 8px; }
     article img { max-width: 100%; border-radius: 12px; margin: 32px 0; }
-    /* Index list */
+    /* Index list — card style matching the site */
     .post-list { list-style: none; margin: 40px 0 0; padding: 0; }
-    .post-list li { border-top: 1px solid var(--border); padding: 28px 0; }
-    .post-list a { text-decoration: none; display: block; }
-    .post-list h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin: 0 0 8px; color: var(--fg); transition: opacity 0.2s; }
-    .post-list a:hover h2 { opacity: 0.75; }
-    .post-list p { color: var(--muted2); margin: 0 0 8px; font-size: 16px; }
+    .post-list li { margin-bottom: 20px; }
+    .post-list a {
+      text-decoration: none; display: flex; gap: 20px;
+      background: #1A1A1F; border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .post-list a:hover { border-color: var(--border2); }
+    .post-list .thumb { flex-shrink: 0; width: 200px; aspect-ratio: 16/9; overflow: hidden; background: #222228; }
+    .post-list .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .post-list a:hover .thumb img { transform: scale(1.05); }
+    .post-list .post-body { padding: 20px 22px 20px 0; display: flex; flex-direction: column; justify-content: center; }
+    .post-list h2 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin: 0 0 8px; color: var(--fg); line-height: 1.2; }
+    .post-list p { color: var(--muted2); margin: 0 0 10px; font-size: 15px; line-height: 1.5; }
     .post-list .date { color: var(--muted); font-size: 13px; }
+    @media (max-width: 599px) {
+      .post-list a { flex-direction: column; gap: 0; }
+      .post-list .thumb { width: 100%; }
+      .post-list .post-body { padding: 18px 20px; }
+    }
     /* Footer */
     footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     footer .brand { display: flex; align-items: center; gap: 12px; }
@@ -114,10 +128,23 @@
   <div class="meta">Companion write-ups to the videos — same honest fan perspective, in reading form.</div>
   <ul class="post-list">
     <li>
+      <a href="/blog/cotaland-is-changing-fast-major-construction-park-update/">
+        <div class="thumb"><img src="/images/hero.jpg" alt="COTALand Is Changing FAST! Major Construction &amp; Park Update" loading="lazy" /></div>
+        <div class="post-body">
+          <h2>COTALand Is Changing FAST! Major Construction &amp; Park Update</h2>
+          <p>A closer look inside COTALand as landscaping, shade structures, family rides, new pathways, and final construction bring Austin's new theme park closer to opening.</p>
+          <span class="date">July 21, 2026</span>
+        </div>
+      </a>
+    </li>
+    <li>
       <a href="/blog/seaworld-san-antonio-needs-to-make-a-move/">
-        <h2>SeaWorld San Antonio Needs to Make a Move</h2>
-        <p>A genuine fan's wishlist for a park with more potential than it lets on. What SeaWorld San Antonio has, what it's missing, and where it could go next.</p>
-        <span class="date">February 13, 2026</span>
+        <div class="thumb"><img src="https://img.youtube.com/vi/fiuNMSg8JSE/maxresdefault.jpg" alt="SeaWorld San Antonio Needs to Make a Move" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/fiuNMSg8JSE/hqdefault.jpg'" /></div>
+        <div class="post-body">
+          <h2>SeaWorld San Antonio Needs to Make a Move</h2>
+          <p>A genuine fan's wishlist for a park with more potential than it lets on. What SeaWorld San Antonio has, what it's missing, and where it could go next.</p>
+          <span class="date">February 13, 2026</span>
+        </div>
       </a>
     </li>
   </ul>

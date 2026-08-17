@@ -92,6 +92,7 @@ function head({ title, description, canonical, image }) {
     .meta { font-size: 14px; color: var(--muted); margin-bottom: 40px; }
     .video { position: relative; padding-bottom: 56.25%; height: 0; margin: 0 0 48px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border2); }
     .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; border: 1px solid var(--border2); margin: 0 0 40px; display: block; }
     article { font-size: 18px; color: rgba(240,235,232,0.9); }
     article h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin: 48px 0 16px; color: var(--fg); }
     article p { margin: 0 0 24px; }
@@ -100,14 +101,27 @@ function head({ title, description, canonical, image }) {
     article ul, article ol { margin: 0 0 24px; padding-left: 24px; }
     article li { margin-bottom: 8px; }
     article img { max-width: 100%; border-radius: 12px; margin: 32px 0; }
-    /* Index list */
+    /* Index list — card style matching the site */
     .post-list { list-style: none; margin: 40px 0 0; padding: 0; }
-    .post-list li { border-top: 1px solid var(--border); padding: 28px 0; }
-    .post-list a { text-decoration: none; display: block; }
-    .post-list h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin: 0 0 8px; color: var(--fg); transition: opacity 0.2s; }
-    .post-list a:hover h2 { opacity: 0.75; }
-    .post-list p { color: var(--muted2); margin: 0 0 8px; font-size: 16px; }
+    .post-list li { margin-bottom: 20px; }
+    .post-list a {
+      text-decoration: none; display: flex; gap: 20px;
+      background: #1A1A1F; border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; transition: border-color 0.2s;
+    }
+    .post-list a:hover { border-color: var(--border2); }
+    .post-list .thumb { flex-shrink: 0; width: 200px; aspect-ratio: 16/9; overflow: hidden; background: #222228; }
+    .post-list .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+    .post-list a:hover .thumb img { transform: scale(1.05); }
+    .post-list .post-body { padding: 20px 22px 20px 0; display: flex; flex-direction: column; justify-content: center; }
+    .post-list h2 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin: 0 0 8px; color: var(--fg); line-height: 1.2; }
+    .post-list p { color: var(--muted2); margin: 0 0 10px; font-size: 15px; line-height: 1.5; }
     .post-list .date { color: var(--muted); font-size: 13px; }
+    @media (max-width: 599px) {
+      .post-list a { flex-direction: column; gap: 0; }
+      .post-list .thumb { width: 100%; }
+      .post-list .post-body { padding: 18px 20px; }
+    }
     /* Footer */
     footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     footer .brand { display: flex; align-items: center; gap: 12px; }
@@ -159,6 +173,15 @@ function formatDate(d) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
+// Resolves the image for a post in priority order:
+// 1. custom `image:` from frontmatter, 2. the video's YouTube thumbnail, 3. logo fallback.
+// `hq` (hqdefault) is guaranteed to exist for any video; `maxres` is sharper but not always present.
+function postImage(post, quality = 'hqdefault') {
+  if (post.image) return post.image
+  if (post.youtube) return `https://img.youtube.com/vi/${post.youtube}/${quality}.jpg`
+  return '/images/logo02.png'
+}
+
 function escapeHtml(s = '') {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
@@ -168,16 +191,26 @@ function escapeAttr(s = '') {
 
 function postPage(post) {
   const canonical = `${SITE.url}/blog/${post.slug}/`
+  // Post hero uses the sharper maxres thumbnail; if a video lacks it, the browser
+  // shows a broken frame briefly — so we let the img onerror swap to hqdefault.
+  const heroSrc = postImage(post, 'maxresdefault')
+  const heroFallback = post.image ? '' : (post.youtube
+    ? ` onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${escapeAttr(post.youtube)}/hqdefault.jpg'"`
+    : '')
+  const hero = (post.image || post.youtube)
+    ? `<img class="hero" src="${escapeAttr(heroSrc)}" alt="${escapeAttr(post.title)}"${heroFallback} />`
+    : ''
   const video = post.youtube
     ? `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${escapeAttr(post.youtube)}" title="${escapeAttr(post.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`
     : ''
-  return `${head({ title: post.title, description: post.description, canonical, image: post.image })}
+  return `${head({ title: post.title, description: post.description, canonical, image: postImage(post, 'hqdefault') })}
 <body>
 ${navBar()}
 <div class="wrap">
   <div class="eyebrow"><a href="/blog/">Blog</a></div>
   <h1 class="title">${escapeHtml(post.title)}</h1>
   <div class="meta">${formatDate(post.date)}</div>
+  ${hero}
   ${video}
   <article>${post.html}</article>
   <a class="back" href="/blog/">← All posts</a>
@@ -189,13 +222,25 @@ ${footer()}
 
 function indexPage(posts) {
   const canonical = `${SITE.url}/blog/`
-  const items = posts.map(p => `    <li>
+  const items = posts.map(p => {
+    const thumbSrc = postImage(p, 'maxresdefault')
+    const thumbFallback = p.image ? '' : (p.youtube
+      ? ` onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${escapeAttr(p.youtube)}/hqdefault.jpg'"`
+      : '')
+    const thumb = (p.image || p.youtube)
+      ? `<div class="thumb"><img src="${escapeAttr(thumbSrc)}" alt="${escapeAttr(p.title)}" loading="lazy"${thumbFallback} /></div>`
+      : ''
+    return `    <li>
       <a href="/blog/${p.slug}/">
-        <h2>${escapeHtml(p.title)}</h2>
-        <p>${escapeHtml(p.description)}</p>
-        <span class="date">${formatDate(p.date)}</span>
+        ${thumb}
+        <div class="post-body">
+          <h2>${escapeHtml(p.title)}</h2>
+          <p>${escapeHtml(p.description)}</p>
+          <span class="date">${formatDate(p.date)}</span>
+        </div>
       </a>
-    </li>`).join('\n')
+    </li>`
+  }).join('\n')
   return `${head({ title: 'Blog', description: 'Honest write-ups on coasters, parks, and the thrill ride world — companion reads to the ThrillNerds videos.', canonical, image: '/images/logo02.png' })}
 <body>
 ${navBar()}

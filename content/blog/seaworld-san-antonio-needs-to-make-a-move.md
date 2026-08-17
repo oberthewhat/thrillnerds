@@ -3,7 +3,7 @@ title: SeaWorld San Antonio Needs to Make a Move
 description: A genuine fan's wishlist for a park with more potential than it lets on. What SeaWorld San Antonio has, what it's missing, and where it could go next.
 youtube: fiuNMSg8JSE
 date: 2026-02-14
-image: /images/hero.jpg
+image: 
 ---
 
 SeaWorld San Antonio is one of those parks I keep coming back to.
