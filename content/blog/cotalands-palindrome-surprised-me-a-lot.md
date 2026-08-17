@@ -1,6 +1,6 @@
 ---
 title: COTALAND’s Palindrome Surprised Me... A LOT
-description: My first ride on Palindrome at COTALand, an unexpectedly intense Gerstlauer shuttle coaster opening at Circuit of the Americas in Austin.
+description: My first ride on Palindrome at COTALAND, an unexpectedly intense Gerstlauer shuttle coaster opening at Circuit of the Americas in Austin.
 youtube: esXB_p5lZjk
 date: 2026-03-24
 image: /images/hero.jpg
@@ -8,9 +8,9 @@ image: /images/hero.jpg
 
 Palindrome fooled me.
 
-I had watched this roller coaster being built and tested at COTALand, and from the ground, it looked pretty mild. Everything seemed controlled. The layout looked compact, and I assumed it would be a good supporting ride next to Circuit Breaker.
+I had watched this roller coaster being built and tested at COTALAND, and from the ground, it looked pretty mild. Everything seemed controlled. The layout looked compact, and I assumed it would be a good supporting ride next to Circuit Breaker.
 
-Then I got the chance to ride it before COTALand opened.
+Then I got the chance to ride it before COTALAND opened.
 
 The park was still under construction, so most of my first ride looked like a roller coaster flying through a dirt field. Even without the finished landscaping and pathways around it, Palindrome immediately became one of my favorite roller coasters in Texas.
 
@@ -18,7 +18,7 @@ It hits much harder than it looks.
 
 ## I underestimated Palindrome
 
-Palindrome is a Gerstlauer shuttle coaster at COTALand, the new amusement park being built at Circuit of the Americas in Austin.
+Palindrome is a Gerstlauer shuttle coaster at COTALAND, the new amusement park being built at Circuit of the Americas in Austin.
 
 Because it uses a shuttle layout, the train travels through the course once in the forward direction, climbs a spike, and then completes the elements again while running backward.
 
@@ -44,7 +44,7 @@ Palindrome begins with a short turn out of the station and heads directly toward
 
 I have always enjoyed Gerstlauer vertical lifts. There is something strange about lying back and looking straight into the sky while the train climbs beneath you.
 
-Palindrome is not an especially tall roller coaster, so the trip to the top happens quickly. There is still enough time to look across COTALand, Circuit of the Americas, and toward downtown Austin before the train reaches the first drop.
+Palindrome is not an especially tall roller coaster, so the trip to the top happens quickly. There is still enough time to look across COTALAND, Circuit of the Americas, and toward downtown Austin before the train reaches the first drop.
 
 For a split second, everything feels calm.
 
@@ -102,7 +102,7 @@ After the backward run, the train hits the brakes while climbing the original dr
 
 It then rolls into position on Palindrome's rotating switch track. The platform turns the train and aligns it with the final section leading back to the station.
 
-The entire process was quicker and smoother than I expected, especially while COTALand was still under construction.
+The entire process was quicker and smoother than I expected, especially while COTALAND was still under construction.
 
 That switch track is an important part of the ride's operation. Palindrome needs to move trains through the rotation efficiently if it is going to handle regular crowds once the Austin theme park opens.
 
@@ -112,7 +112,7 @@ Seeing the system work so well during an early ride was encouraging.
 
 I understand why Palindrome can be overlooked in videos.
 
-It is compact, it does not rely on a massive first drop, and most of the elements look fairly controlled from the ground. Next to Circuit Breaker, it is easy to assume Palindrome will be the secondary roller coaster at COTALand.
+It is compact, it does not rely on a massive first drop, and most of the elements look fairly controlled from the ground. Next to Circuit Breaker, it is easy to assume Palindrome will be the secondary roller coaster at COTALAND.
 
 That assumption disappeared as soon as I rode it.
 
@@ -122,9 +122,9 @@ Palindrome has airtime, lateral forces, two trips through a zero-G roll, a verti
 
 Those ingredients come together better than I expected.
 
-## Palindrome gives COTALand a strong second coaster
+## Palindrome gives COTALAND a strong second coaster
 
-Circuit Breaker will receive plenty of attention as COTALand's first tilt coaster, but Palindrome deserves to stand on its own.
+Circuit Breaker will receive plenty of attention as COTALAND's first tilt coaster, but Palindrome deserves to stand on its own.
 
 It gives the Austin amusement park a roller coaster that feels approachable from the midway while still offering enough intensity for experienced riders. Its compact footprint also places a lot of movement close to the road, making it one of the most visible attractions at Circuit of the Americas.
 
@@ -132,4 +132,4 @@ Most importantly, it is fun in a way that is difficult to understand until you a
 
 I went into my first Palindrome ride expecting a mild supporting coaster. I came off thinking it was one of the best surprises in the Texas roller coaster lineup.
 
-Once COTALand opens and people finally get the chance to ride it, I think quite a few of them are going to have the same reaction.
+Once COTALAND opens and people finally get the chance to ride it, I think quite a few of them are going to have the same reaction.

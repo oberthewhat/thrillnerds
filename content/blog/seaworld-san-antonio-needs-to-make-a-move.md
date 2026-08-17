@@ -92,7 +92,7 @@ A lot of people still remember the SeaWorld they visited as kids.
 
 They remember the animals and shows, but they do not necessarily think of Texas Stingray, Steel Eel, Tidal Surge, or a full amusement park experience.
 
-That becomes a much bigger problem with COTALand opening near Austin.
+That becomes a much bigger problem with COTALAND opening near Austin.
 
 Central Texas families are going to have a closer amusement park option, and SeaWorld needs to make sure those families understand why the drive to San Antonio is still worth making.
 
