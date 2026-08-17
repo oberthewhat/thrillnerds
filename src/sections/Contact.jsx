@@ -84,6 +84,7 @@ export default function Contact() {
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-4"
+                netlify
               >
                 <input type="hidden" name="form-name" value="contact" />
                 {/* Honeypot: real users never see or fill this; bots do, and get filtered */}
