@@ -36,10 +36,11 @@ COTALAND’s first regular full day is **Sunday, September 27, from 10:00 a.m. t
 
 There are currently two regular single-day options in the ticket store.
 
-| Ticket | Price | What it includes |
-| --- | ---: | --- |
-| Choose Your Day Ticket | Starting at $65 | Admission on the specific date selected at purchase |
-| Any Day Ticket | $75 | One visit within 365 days of purchase, subject to blackout dates |
+**Choose Your Day Ticket: Starting at $65**  
+Admission on the specific date selected at purchase.
+
+**Any Day Ticket: $75**  
+One visit within 365 days of purchase, subject to blackout dates.
 
 The **Choose Your Day Ticket** is the least expensive way into the park. COTALAND says prices may vary based on demand, so $65 is a starting price rather than a guarantee for every date.
 
@@ -105,11 +106,9 @@ The current Pro and Champion sales pages do not clearly say that either pass inc
 
 COTALAND’s location at Circuit of the Americas gives it plenty of parking, but none of the regular single-day tickets include it.
 
-| Parking option | Starting price |
-| --- | ---: |
-| General Parking | $30 |
-| Preferred Parking | $45 |
-| Valet Parking | $75 |
+- **General Parking:** Starting at $30
+- **Preferred Parking:** Starting at $45
+- **Valet Parking:** Starting at $75
 
 Preferred parking is listed as covered garage parking closer to the park. Valet also uses the covered garage.
 
@@ -119,12 +118,17 @@ Parking is subject to availability and is not valid during race events or other 
 
 COTALAND has also launched several date-specific upgrades.
 
-| Add-on | Starting price | What it does |
-| --- | ---: | --- |
-| All Day Drink | $18 | Souvenir bottle with fountain beverage refills every 15 minutes |
-| Podium Pass | $39 | One priority entry per participating attraction |
-| Podium Pass Unlimited | $69 | Repeat priority access with a 15-minute cooldown on the same ride |
-| Hot Lap | $175 | Passenger ride with a professional driver on the COTA circuit |
+**All Day Drink: Starting at $18**  
+Includes a souvenir bottle with fountain beverage refills every 15 minutes.
+
+**Podium Pass: Starting at $39**  
+Provides one priority entry per participating attraction.
+
+**Podium Pass Unlimited: Starting at $69**  
+Provides repeat priority access with a 15-minute cooldown on the same ride.
+
+**Hot Lap: Starting at $175**  
+Includes a passenger ride with a professional driver on the COTA circuit.
 
 The **Podium Pass** products do not include park admission. COTALAND says they cover participating attractions, so we still need to see the final ride list and how the priority queues operate in practice.
 
@@ -154,4 +158,3 @@ September 26 is finally the answer.
 - [COTALAND hours and operating calendar](https://cotaland.com/hours/)
 - [COTALAND ticket and pass FAQ](https://cotaland.com/faqs/)
 - [COTALAND ticketing, admission and park terms](https://cotaland.com/ticketing-admission-park-terms-and-conditions/)
-
