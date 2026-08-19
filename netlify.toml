@@ -18,10 +18,10 @@
 # --- Specific redirects FIRST (order matters) ---
 
 [[redirects]]
-  from = "/milliesbirthday"
-  to = "/milliesbirthday.html"
+  from = "/virginia"
+  to = "/virginia-trip.html"
   status = 200
-
+  
 # Blog pages are real static files in dist/blog/ — serve them directly,
 # so the SPA catch-all below never swallows them.
 [[redirects]]
