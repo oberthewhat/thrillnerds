@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Virginia Trip · Sept 10–15, 2026</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #14141c;
+    --card2: #1a1a24;
+    --text: #e8e8ee;
+    --muted: #9a9aa8;
+    --border: #2a2a38;
+    --grad1: #f26c4f;
+    --grad2: #e8447f;
+    --grad3: #a04fb0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  /* HERO */
+  header.hero {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px 44px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(232,68,127,0.14), transparent 60%);
+    pointer-events: none;
+  }
+  .hero img.logo { height: 60px; margin-bottom: 22px; position: relative; }
+  .hero h1 {
+    position: relative;
+    font-size: clamp(30px, 6vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, var(--grad1), var(--grad2), var(--grad3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .dates {
+    position: relative;
+    color: var(--muted);
+    font-size: 17px;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* STICKY NAV */
+  nav.jump {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+  nav.jump .wrap { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  nav.jump .wrap::-webkit-scrollbar { display: none; }
+  nav.jump a {
+    flex: 0 0 auto;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  nav.jump a:hover { color: var(--text); border-color: var(--grad2); }
+
+  main { padding: 40px 0 80px; }
+
+  /* DAY CARD */
+  .day {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .day-inner { padding: 28px; }
+  .day-head { margin-bottom: 18px; }
+  .day-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--grad2);
+    margin-bottom: 6px;
+  }
+  .day-head h2 { font-size: 23px; font-weight: 700; letter-spacing: -0.3px; }
+
+  .block { padding: 16px 0; border-top: 1px solid var(--border); }
+  .block:first-of-type { border-top: none; padding-top: 4px; }
+  .block h3 {
+    font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 10px;
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  .block h3 .time { font-size: 13px; font-weight: 600; color: var(--grad1); white-space: nowrap; }
+  .block ul { list-style: none; }
+  .block li { position: relative; padding-left: 18px; color: var(--muted); font-size: 15px; margin-bottom: 4px; }
+  .block li::before {
+    content: ""; position: absolute; left: 0; top: 11px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--grad2);
+  }
+  .block li strong { color: var(--text); font-weight: 600; }
+
+  .row { display: flex; gap: 10px; font-size: 15px; color: var(--muted); padding: 3px 0; }
+  .row .k { flex: 0 0 130px; color: var(--text); font-weight: 600; }
+
+  .note {
+    background: var(--card2);
+    border-left: 3px solid var(--grad2);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px; margin-top: 14px; font-size: 14px; color: var(--muted);
+  }
+  .note.warn { border-left-color: var(--grad1); }
+  .note strong { color: var(--text); }
+
+  /* IMAGE PLACEHOLDER */
+  .photo {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    background: linear-gradient(135deg, var(--card2), #101018);
+    border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 20px; color: var(--muted); gap: 6px;
+  }
+  .photo.inner {
+    aspect-ratio: 16 / 6;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    margin: 8px 0 4px;
+  }
+  .photo .icon { font-size: 26px; opacity: 0.7; }
+  .photo .label { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--grad2); }
+  .photo .sugg { font-size: 13px; max-width: 460px; }
+  .photo .fname { font-size: 11px; font-family: ui-monospace, Menlo, monospace; color: #6a6a78; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* MAP */
+  .map { margin-top: 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .map iframe { width: 100%; height: 260px; border: 0; display: block; filter: grayscale(0.25) contrast(1.05); }
+  .map-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .map-empty {
+    margin-top: 14px; border: 1px dashed var(--border); border-radius: 12px;
+    padding: 22px; text-align: center; color: var(--muted); font-size: 14px;
+  }
+  .map-empty strong { color: var(--grad1); }
+
+  a.link {
+    color: var(--grad2);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(232,68,127,0.5);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  a.link:hover { color: var(--grad1); border-bottom-color: var(--grad1); }
+  .block h3 a.link { border-bottom-width: 1px; }
+
+  .backup { background: linear-gradient(135deg, rgba(242,108,79,0.07), rgba(160,79,176,0.07)); }
+
+  footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+  footer img { height: 26px; opacity: 0.5; margin: 0 auto 12px; display: block; }
+
+  @media (max-width: 600px) {
+    .day-inner { padding: 20px; }
+    .row { flex-direction: column; gap: 0; }
+    .row .k { flex: none; }
+    .map iframe { height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="logo" src="thrillnerds-wordmark.png" alt="ThrillNerds" onerror="this.style.display='none'">
+  <h1>Virginia Trip</h1>
+  <div class="dates">September 10–15, 2026</div>
+</header>
+
+<nav class="jump">
+  <div class="wrap">
+    <a href="#thu">Thu 10</a>
+    <a href="#fri">Fri 11</a>
+    <a href="#sat">Sat 12</a>
+    <a href="#sun">Sun 13</a>
+    <a href="#mon">Mon 14</a>
+    <a href="#tue">Tue 15</a>
+    <a href="#backup">Weather Backup</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- THURSDAY -->
+  <section class="day" id="thu">
+    <img class="photo" src="thu-carter-mountain.jpg" alt="Carter Mountain overlook" onerror="this.style.display='none'">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Thursday · Sept 10</span>
+        <h2>Austin to Charlottesville</h2>
+      </div>
+
+      <div class="block">
+        <h3>Flights <span class="time">American · conf. DUXCCY</span></h3>
+        <div class="row"><span class="k">AA1067</span><span>Austin → Dallas · depart AUS 8:00 AM, arrive DFW 9:21 AM</span></div>
+        <div class="row"><span class="k">Connection</span><span>1 hr 2 min at DFW</span></div>
+        <div class="row"><span class="k">Dallas → Richmond</span><span>depart DFW 10:23 AM, arrive RIC 2:23 PM</span></div>
+      </div>
+
+      <div class="block">
+        <h3>Charlottesville arrival</h3>
+        <ul>
+          <li><strong>~3:00 PM</strong> — collect luggage and rental car</li>
+          <li>Drive ~1 hr 15 min to Charlottesville</li>
+          <li><strong>~4:30 PM</strong> — check in at 100 Oakhurst Circle, freshen up, meet family at Carter Mountain</li>
+        </ul>
+        <div class="map">
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=100+Oakhurst+Circle+Charlottesville+VA&output=embed"></iframe>
+        </div>
+        <div class="map-label">Lodging — 100 Oakhurst Circle, Charlottesville VA</div>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://chilesfamilyorchards.com/calendar/sunsets-2026/" target="_blank" rel="noopener">Carter Mountain Sunset Series</a> <span class="time">6:00–9:00 PM</span></h3>
+        <ul>
+          <li>The Mellow Dramatics playing classic rock</li>
+          <li>Vision BBQ and Farmacy food trucks</li>
+          <li>Bold Rock cider, wine, mountain views — dinner at the event</li>
+        </ul>
+        <div class="note warn"><strong>Needs advance tickets.</strong> If the flight is substantially delayed, backup is dinner with family in Charlottesville.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRIDAY -->
+  <section class="day" id="fri">
+    <img class="photo" src="fri-luray-caverns.jpg" alt="Luray Caverns" onerror="this.style.display='none'">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Friday · Sept 11</span>
+        <h2>Luray, Skyline Drive &amp; Downtown Mall</h2>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://bodosbagels.com/" target="_blank" rel="noopener">Bodo's Bagels</a> breakfast <span class="time">7:00 AM</span></h3>
+        <ul>
+          <li>UVA Corner location, 1609 University Avenue</li>
+          <li>Leave Charlottesville ~7:45–8:00 AM</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://luraycaverns.com/" target="_blank" rel="noopener">Luray Caverns</a> <span class="time">~9:15–9:30 AM</span></h3>
+        <ul>
+          <li>Tour the caverns — allow ~2 hours, longer for the included museums</li>
+          <li>Lunch around Luray</li>
+        </ul>
+        <div class="note">Open until 6:00 PM after Labor Day.</div>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://www.nps.gov/shen/planyourvisit/skyline-drive.htm" target="_blank" rel="noopener">Skyline Drive</a></h3>
+        <img class="photo inner" src="fri-skyline-drive.jpg" alt="Skyline Drive overlook" onerror="this.style.display='none'">
+        <ul>
+          <li>Enter Shenandoah at Thornton Gap (mile 31.5)</li>
+          <li>Drive south to Swift Run Gap (mile 65.5) — ~34-mile section, stop at overlooks</li>
+          <li>Exit at Swift Run Gap, return to Charlottesville <strong>~4:30–5:00 PM</strong></li>
+        </ul>
+        <div class="note">Vehicle entrance fee $30, covers everyone for 7 days.</div>
+      </div>
+
+      <div class="block">
+        <h3>Downtown Charlottesville with family</h3>
+        <ul>
+          <li><strong>~5:30 PM</strong> — <a class="link" href="https://ndbookshop.com/" target="_blank" rel="noopener">New Dominion Bookshop</a> (404 E Main, open til 9 PM Fri)</li>
+          <li><strong>~6:15 PM</strong> — dinner on the <a class="link" href="https://www.downtowncharlottesville.com/" target="_blank" rel="noopener">Downtown Mall</a></li>
+          <li><strong>~7:30–9:30 PM</strong> — <a class="link" href="https://www.decadesarcade.com/" target="_blank" rel="noopener">Decades Arcade</a> (418 E Main, open til 10 PM)</li>
+        </ul>
+        <div class="note">Bookshop and arcade are nearly next door. Two-hour unlimited arcade pass: ~$12.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SATURDAY -->
+  <section class="day" id="sat">
+    <img class="photo" src="sat-riverhouse.jpg" alt="Riverhouse on the Piankatank" onerror="this.style.display='none'">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Saturday · Sept 12</span>
+        <h2>Charlottesville to the Riverhouse</h2>
+      </div>
+
+      <div class="block">
+        <h3>Morning with family <span class="time">8:00 AM</span></h3>
+        <ul>
+          <li>Bodo's Bagels with the family</li>
+          <li>Pack and check out, leave ~9:00–9:30 AM</li>
+        </ul>
+        <div class="note">Richmond lunch stop dropped from the primary plan to leave enough time for the boat and riverhouse.</div>
+      </div>
+
+      <div class="block">
+        <h3>Arrive at the riverhouse <span class="time">~11:30 AM–noon</span></h3>
+        <ul>
+          <li>Drive directly to the riverhouse on Eventide Lane</li>
+          <li>Unpack, settle in, prepare the boat</li>
+        </ul>
+        <div class="map">
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=11078+Eventide+Ln+Gloucester+VA+23061&output=embed"></iframe>
+        </div>
+        <div class="map-label">Riverhouse — 11078 Eventide Ln, Gloucester VA 23061</div>
+      </div>
+
+      <div class="block">
+        <h3>Boat to <a class="link" href="https://www.holeinthewallwaterfrontgrill.com/" target="_blank" rel="noopener">Hole in the Wall</a> <span class="time">noon / early afternoon</span></h3>
+        <ul>
+          <li>Depart the riverhouse, boat down the Piankatank toward Gwynn's Island</li>
+          <li>Dock at Hole in the Wall Waterfront Grill for a leisurely waterfront lunch</li>
+          <li>Return to the riverhouse in the afternoon</li>
+        </ul>
+        <div class="note">Serving from 11:30 AM Saturday; welcomes guests arriving by boat. Call shortly before the trip to confirm seasonal hours and dock availability. Time the departure around weather, wind, tide, cruising speed, travel time, and plenty of daylight for the return.</div>
+      </div>
+
+      <div class="block">
+        <h3>Saturday evening</h3>
+        <ul>
+          <li>Relax at the riverhouse — no additional sightseeing</li>
+          <li>Casual dinner, drinks, time by the water</li>
+        </ul>
+        <div class="note">Intentionally the least structured day of the trip.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUNDAY -->
+  <section class="day" id="sun">
+    <img class="photo" src="sun-busch-gardens.jpg" alt="Busch Gardens Williamsburg coaster" onerror="this.style.display='none'">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Sunday · Sept 13</span>
+        <h2>Busch Gardens Williamsburg</h2>
+      </div>
+
+      <div class="block">
+        <h3>Morning</h3>
+        <ul>
+          <li>Relaxed breakfast at the riverhouse</li>
+          <li>Leave early enough to arrive ~30–45 min before opening</li>
+        </ul>
+        <div class="note">Check park hours again the week before the trip.</div>
+        <div class="map">
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Busch+Gardens+Williamsburg+VA&output=embed"></iframe>
+        </div>
+        <div class="map-label">Busch Gardens Williamsburg, VA</div>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://buschgardens.com/williamsburg/" target="_blank" rel="noopener">Busch Gardens</a> — full day</h3>
+        <ul>
+          <li>Ride the coasters and cover anything you want</li>
+          <li>Take a midday break rather than rushing continuously</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://buschgardens.com/williamsburg/events/howl-o-scream/" target="_blank" rel="noopener">Howl-O-Scream</a> <span class="time">from 6:00 PM</span></h3>
+        <ul>
+          <li>Season starts September 11</li>
+          <li>Scare actors and haunted attractions begin at 6:00 PM</li>
+          <li>Haunted houses and scare zones included with admission; coasters run after dark</li>
+        </ul>
+        <div class="note">Stay for nighttime rides and return to the riverhouse after close.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MONDAY -->
+  <section class="day" id="mon">
+    <img class="photo" src="mon-jamestown-yorktown.jpg" alt="Jamestown and Yorktown" onerror="this.style.display='none'">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Monday · Sept 14</span>
+        <h2>Jamestown, Yorktown &amp; Yorktown Pub</h2>
+      </div>
+
+      <div class="block">
+        <h3>Relaxed morning</h3>
+        <ul>
+          <li>Breakfast and coffee at the riverhouse</li>
+          <li>Leave ~8:30–9:00 AM — not rushed</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://www.nps.gov/jame/planyourvisit/glasshouse.htm" target="_blank" rel="noopener">Jamestown Glasshouse</a> <span class="time">~9:45–10:00 AM</span></h3>
+        <ul>
+          <li>Watch the glassblowing demonstration</li>
+          <li>See the remains of the original glass furnaces</li>
+          <li>Allow ~45–60 min</li>
+        </ul>
+        <div class="note">Open daily 8:45 AM–4:30 PM with demonstrations throughout the day.</div>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://historicjamestowne.org/" target="_blank" rel="noopener">Historic Jamestowne</a> dig site</h3>
+        <ul>
+          <li>Visit the settlement and archaeological dig</li>
+          <li>Explore the fort site and Archaearium museum</li>
+          <li>Allow ~2–3 hours including lunch at the Dale House Café</li>
+        </ul>
+        <div class="note warn">Dale House Café is closed for renovations, expected to reopen summer 2026 — confirm before the trip. If not open, bring a picnic or use another nearby option.</div>
+      </div>
+
+      <div class="block">
+        <h3><a class="link" href="https://www.nps.gov/york/planyourvisit/battlefield.htm" target="_blank" rel="noopener">Yorktown Battlefield</a> <span class="time">~1:30–2:00 PM</span></h3>
+        <ul>
+          <li>Follow current Colonial Parkway detours to Yorktown</li>
+          <li>Start at the Battlefield Visitor Center</li>
+          <li>Complete the main 7-mile Auto Tour; add parts of the 9-mile Allied Encampment Tour if time allows</li>
+        </ul>
+        <div class="note">Tour roads open until sunset; free NPS Yorktown audio-guide app available. Colonial Parkway construction has closures after September 7 — check the detour map before leaving.</div>
+      </div>
+
+      <div class="block">
+        <h3>Yorktown waterfront &amp; <a class="link" href="https://www.yorktownpubva.com/" target="_blank" rel="noopener">Yorktown Pub</a></h3>
+        <ul>
+          <li><strong>~4:30–5:00 PM</strong> — walk Yorktown Beach and <a class="link" href="https://www.riverwalklanding.com/" target="_blank" rel="noopener">Riverwalk Landing</a></li>
+          <li><strong>~5:00–6:00 PM</strong> — dinner at <a class="link" href="https://www.yorktownpubva.com/" target="_blank" rel="noopener">Yorktown Pub</a>, then return to the riverhouse</li>
+        </ul>
+        <div class="note">Yorktown Pub open Monday 11:00 AM–11:00 PM, no reservations.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TUESDAY -->
+  <section class="day" id="tue">
+    <img class="photo" src="tue-morning-water.jpg" alt="Morning on the water" onerror="this.style.display='none'">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Tuesday · Sept 15</span>
+        <h2>Riverhouse Morning &amp; Return Home</h2>
+      </div>
+
+      <div class="block">
+        <h3>Morning</h3>
+        <ul>
+          <li>Sleep in, relaxed breakfast</li>
+          <li>Optional short boat ride if the weather is good</li>
+          <li>Pack, clean up, final time by the water, early lunch</li>
+          <li>Leave the riverhouse ~1:45–2:00 PM</li>
+        </ul>
+        <div class="note">Do most packing Monday night if you want the boat Tuesday morning.</div>
+      </div>
+
+      <div class="block">
+        <h3>Return flights <span class="time">arrive RIC ~3:15 PM</span></h3>
+        <div class="row"><span class="k">Return car</span><span>at Richmond International</span></div>
+        <div class="row"><span class="k">RIC → CLT</span><span>depart 5:23 PM, arrive 6:48 PM</span></div>
+        <div class="row"><span class="k">Connection</span><span>32 min at Charlotte</span></div>
+        <div class="row"><span class="k">CLT → AUS</span><span>depart 7:20 PM, arrive 9:08 PM</span></div>
+        <div class="note warn">The Charlotte connection is extremely tight. Go directly to the Austin gate after landing.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKUP -->
+  <section class="day backup" id="backup">
+    <div class="day-inner">
+      <div class="day-head">
+        <span class="day-tag">Contingency</span>
+        <h2>Boating-Weather Backup Plan</h2>
+      </div>
+      <p style="color:var(--muted); font-size:15px; margin-bottom:16px;">Saturday is the preferred Hole in the Wall boating day. If wind, rain, or water conditions make boating unsafe, swap the two days:</p>
+
+      <div class="block">
+        <h3>Saturday (backup)</h3>
+        <ul>
+          <li>Leave Charlottesville after Bodo's</li>
+          <li>Visit the Jamestown Glasshouse and dig site while traveling toward Gloucester</li>
+          <li>Eat at the Dale House Café if open</li>
+          <li>Continue to the riverhouse and relax</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Monday (backup)</h3>
+        <ul>
+          <li>Boat to Hole in the Wall for lunch, return to the riverhouse</li>
+          <li>Visit Yorktown Battlefield later in the afternoon</li>
+          <li>Finish with dinner at Yorktown Pub</li>
+        </ul>
+      </div>
+      <div class="note">Poor Saturday boating conditions don't eliminate either Jamestown or the Hole in the Wall trip.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img src="thrillnerds-wordmark.png" alt="ThrillNerds" onerror="this.style.display='none'">
+  <div>Virginia · September 10–15, 2026</div>
+</footer>
+
+</body>
+</html>
